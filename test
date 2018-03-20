@@ -1,0 +1,253 @@
+#! c:/iverilog-x86/bin/vvp
+:ivl_version "10.0 (stable)" "(v10_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_020c1760 .scope module, "nand_quodra_input" "nand_quodra_input" 2 1;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "out"
+    .port_info 1 /INPUT 1 "in1"
+    .port_info 2 /INPUT 1 "in2"
+    .port_info 3 /INPUT 1 "in3"
+    .port_info 4 /INPUT 1 "in4"
+o020ce024 .functor BUFZ 1, C4<z>; HiZ drive
+o020ce03c .functor BUFZ 1, C4<z>; HiZ drive
+L_020b6d00 .functor AND 1, o020ce024, o020ce03c, C4<1>, C4<1>;
+o020ce054 .functor BUFZ 1, C4<z>; HiZ drive
+o020ce06c .functor BUFZ 1, C4<z>; HiZ drive
+L_020b6760 .functor AND 1, o020ce054, o020ce06c, C4<1>, C4<1>;
+L_020b6688 .functor AND 1, L_020b6d00, L_020b6760, C4<1>, C4<1>;
+L_020b67a8 .functor NOT 1, L_020b6688, C4<0>, C4<0>, C4<0>;
+v020b6fa0_0 .net "in1", 0 0, o020ce024;  0 drivers
+v020b7838_0 .net "in2", 0 0, o020ce03c;  0 drivers
+v020b6d90_0 .net "in3", 0 0, o020ce054;  0 drivers
+v020b6e40_0 .net "in4", 0 0, o020ce06c;  0 drivers
+v020b6e98_0 .net "out", 0 0, L_020b67a8;  1 drivers
+v020b6f48_0 .net "tmp1", 0 0, L_020b6d00;  1 drivers
+v020b7050_0 .net "tmp2", 0 0, L_020b6760;  1 drivers
+v020b7aa0_0 .net "tmp3", 0 0, L_020b6688;  1 drivers
+S_020c1830 .scope module, "nand_triple_input" "nand_triple_input" 2 16;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "out"
+    .port_info 1 /INPUT 1 "in1"
+    .port_info 2 /INPUT 1 "in2"
+    .port_info 3 /INPUT 1 "in3"
+o020ce15c .functor BUFZ 1, C4<z>; HiZ drive
+o020ce174 .functor BUFZ 1, C4<z>; HiZ drive
+L_020b6c28 .functor AND 1, o020ce15c, o020ce174, C4<1>, C4<1>;
+o020ce18c .functor BUFZ 1, C4<z>; HiZ drive
+L_020b65b0 .functor AND 1, L_020b6c28, o020ce18c, C4<1>, C4<1>;
+v020b7998_0 .net "in1", 0 0, o020ce15c;  0 drivers
+v020b7c00_0 .net "in2", 0 0, o020ce174;  0 drivers
+v020b7af8_0 .net "in3", 0 0, o020ce18c;  0 drivers
+v020b7a48_0 .net "out", 0 0, L_020b65b0;  1 drivers
+v020b7d08_0 .net "tmp1", 0 0, L_020b6c28;  1 drivers
+S_01033038 .scope module, "test" "test" 3 1;
+ .timescale 0 0;
+v020fde28_0 .var "a", 0 0;
+v020fda60_0 .var "b", 0 0;
+v020fd9b0_0 .net "behave_carry_out", 0 0, L_020b5d88;  1 drivers
+v020fded8_0 .net "behave_sum", 0 0, L_020b64d8;  1 drivers
+v020fe2f8_0 .var "carry_in", 0 0;
+v020fd850_0 .net "struct_carry_out", 0 0, L_02103260;  1 drivers
+v020fdc70_0 .net "struct_sum", 0 0, L_02103338;  1 drivers
+S_01033108 .scope module, "FA1" "full_adder_behave" 3 5, 4 1 0, S_01033038;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "Bin1"
+    .port_info 1 /INPUT 1 "Bin2"
+    .port_info 2 /INPUT 1 "Bcarry_in"
+    .port_info 3 /OUTPUT 1 "Bsum"
+    .port_info 4 /OUTPUT 1 "Bcarry_out"
+L_020b5fc8 .functor AND 1, v020fde28_0, v020fda60_0, C4<1>, C4<1>;
+L_020b6250 .functor AND 1, L_020b5fc8, v020fe2f8_0, C4<1>, C4<1>;
+L_020b6130 .functor NOT 1, L_020b6250, C4<0>, C4<0>, C4<0>;
+L_020b61c0 .functor NOT 1, v020fda60_0, C4<0>, C4<0>, C4<0>;
+L_020b5f38 .functor AND 1, v020fde28_0, L_020b61c0, C4<1>, C4<1>;
+L_020b65f8 .functor NOT 1, v020fe2f8_0, C4<0>, C4<0>, C4<0>;
+L_020b6208 .functor AND 1, L_020b5f38, L_020b65f8, C4<1>, C4<1>;
+L_020b60a0 .functor NOT 1, L_020b6208, C4<0>, C4<0>, C4<0>;
+L_020b5ea8 .functor NOT 1, v020fde28_0, C4<0>, C4<0>, C4<0>;
+L_020b6298 .functor AND 1, L_020b5ea8, v020fda60_0, C4<1>, C4<1>;
+L_020b6640 .functor NOT 1, v020fe2f8_0, C4<0>, C4<0>, C4<0>;
+L_020b5e18 .functor AND 1, L_020b6298, L_020b6640, C4<1>, C4<1>;
+L_020b63b8 .functor NOT 1, L_020b5e18, C4<0>, C4<0>, C4<0>;
+L_020b6058 .functor NOT 1, v020fde28_0, C4<0>, C4<0>, C4<0>;
+L_020b6568 .functor NOT 1, v020fda60_0, C4<0>, C4<0>, C4<0>;
+L_020b6400 .functor AND 1, L_020b6058, L_020b6568, C4<1>, C4<1>;
+L_020b5ef0 .functor AND 1, L_020b6400, v020fe2f8_0, C4<1>, C4<1>;
+L_020b5f80 .functor NOT 1, L_020b5ef0, C4<0>, C4<0>, C4<0>;
+L_020b6328 .functor AND 1, v020fde28_0, v020fda60_0, C4<1>, C4<1>;
+L_020b60e8 .functor NOT 1, L_020b6328, C4<0>, C4<0>, C4<0>;
+L_020b62e0 .functor AND 1, v020fde28_0, v020fe2f8_0, C4<1>, C4<1>;
+L_020b6370 .functor NOT 1, L_020b62e0, C4<0>, C4<0>, C4<0>;
+L_020b6448 .functor AND 1, v020fda60_0, v020fe2f8_0, C4<1>, C4<1>;
+L_020b6178 .functor NOT 1, L_020b6448, C4<0>, C4<0>, C4<0>;
+L_020b6490 .functor AND 1, L_020b6130, L_020b60a0, C4<1>, C4<1>;
+L_020b5dd0 .functor AND 1, L_020b6490, L_020b63b8, C4<1>, C4<1>;
+L_020b5e60 .functor AND 1, L_020b5dd0, L_020b5f80, C4<1>, C4<1>;
+L_020b64d8 .functor NOT 1, L_020b5e60, C4<0>, C4<0>, C4<0>;
+L_020b6520 .functor AND 1, L_020b60e8, L_020b6370, C4<1>, C4<1>;
+L_020b6010 .functor AND 1, L_020b6520, L_020b6178, C4<1>, C4<1>;
+L_020b5d88 .functor NOT 1, L_020b6010, C4<0>, C4<0>, C4<0>;
+v020b79f0_0 .net "Bcarry_in", 0 0, v020fe2f8_0;  1 drivers
+v020b7cb0_0 .net "Bcarry_out", 0 0, L_020b5d88;  alias, 1 drivers
+v020b7ba8_0 .net "Bin1", 0 0, v020fde28_0;  1 drivers
+v020b7890_0 .net "Bin2", 0 0, v020fda60_0;  1 drivers
+v020b7b50_0 .net "Bsum", 0 0, L_020b64d8;  alias, 1 drivers
+v020b78e8_0 .net *"_s1", 0 0, L_020b5fc8;  1 drivers
+v020b7c58_0 .net *"_s10", 0 0, L_020b5f38;  1 drivers
+v020b7940_0 .net *"_s12", 0 0, L_020b65f8;  1 drivers
+v020fe718_0 .net *"_s14", 0 0, L_020b6208;  1 drivers
+v020fe610_0 .net *"_s19", 0 0, L_020b5ea8;  1 drivers
+v020fe350_0 .net *"_s21", 0 0, L_020b6298;  1 drivers
+v020fe3a8_0 .net *"_s23", 0 0, L_020b6640;  1 drivers
+v020fe400_0 .net *"_s25", 0 0, L_020b5e18;  1 drivers
+v020fe5b8_0 .net *"_s3", 0 0, L_020b6250;  1 drivers
+v020fe668_0 .net *"_s30", 0 0, L_020b6058;  1 drivers
+v020fe458_0 .net *"_s32", 0 0, L_020b6568;  1 drivers
+v020fe508_0 .net *"_s34", 0 0, L_020b6400;  1 drivers
+v020fe6c0_0 .net *"_s36", 0 0, L_020b5ef0;  1 drivers
+v020fe560_0 .net *"_s41", 0 0, L_020b6328;  1 drivers
+v020fe770_0 .net *"_s46", 0 0, L_020b62e0;  1 drivers
+v020fe7c8_0 .net *"_s51", 0 0, L_020b6448;  1 drivers
+v020fe4b0_0 .net *"_s57", 0 0, L_020b6490;  1 drivers
+v020fe140_0 .net *"_s60", 0 0, L_020b5dd0;  1 drivers
+v020fe198_0 .net *"_s63", 0 0, L_020b5e60;  1 drivers
+v020fdcc8_0 .net *"_s69", 0 0, L_020b6520;  1 drivers
+v020fe2a0_0 .net *"_s72", 0 0, L_020b6010;  1 drivers
+v020fdf88_0 .net *"_s8", 0 0, L_020b61c0;  1 drivers
+v020fe090 .array "carry_not_and_input", 0 2;
+v020fe090_0 .net v020fe090 0, 0 0, L_020b60e8; 1 drivers
+v020fe090_1 .net v020fe090 1, 0 0, L_020b6370; 1 drivers
+v020fe090_2 .net v020fe090 2, 0 0, L_020b6178; 1 drivers
+v020fd958 .array "sum_not_and_input", 0 3;
+v020fd958_0 .net v020fd958 0, 0 0, L_020b6130; 1 drivers
+v020fd958_1 .net v020fd958 1, 0 0, L_020b60a0; 1 drivers
+v020fd958_2 .net v020fd958 2, 0 0, L_020b63b8; 1 drivers
+v020fd958_3 .net v020fd958 3, 0 0, L_020b5f80; 1 drivers
+S_020c3fc0 .scope module, "FA2" "full_adder_struct" 3 6, 2 29 0, S_01033038;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "Sin1"
+    .port_info 1 /INPUT 1 "Sin2"
+    .port_info 2 /INPUT 1 "Scarry_in"
+    .port_info 3 /OUTPUT 1 "Ssum"
+    .port_info 4 /OUTPUT 1 "Scarry_out"
+L_021033c8 .functor BUFZ 1, v020fde28_0, C4<0>, C4<0>, C4<0>;
+L_021032a8 .functor BUFZ 1, v020fda60_0, C4<0>, C4<0>, C4<0>;
+L_02103530 .functor BUFZ 1, v020fe2f8_0, C4<0>, C4<0>, C4<0>;
+L_02103890 .functor NOT 1, L_021033c8, C4<0>, C4<0>, C4<0>;
+L_021037b8 .functor NOT 1, L_021032a8, C4<0>, C4<0>, C4<0>;
+L_02103608 .functor NOT 1, L_02103530, C4<0>, C4<0>, C4<0>;
+L_02103770 .functor NAND 1, L_021033c8, L_021032a8, L_02103530, C4<1>;
+L_02103650 .functor NAND 1, L_021033c8, L_021037b8, L_02103608, C4<1>;
+L_02103848 .functor NAND 1, L_02103890, L_021032a8, L_02103608, C4<1>;
+L_021038d8 .functor NAND 1, L_02103890, L_021037b8, L_02103530, C4<1>;
+L_02103218 .functor NAND 1, L_021033c8, L_021032a8, C4<1>, C4<1>;
+L_02103578 .functor NAND 1, L_021033c8, L_02103530, C4<1>, C4<1>;
+L_021035c0 .functor NAND 1, L_021032a8, L_02103530, C4<1>, C4<1>;
+L_02103338 .functor NAND 1, L_02103770, L_02103650, L_02103848, L_021038d8;
+L_02103260 .functor NAND 1, L_02103218, L_02103578, L_021035c0, C4<1>;
+v020fe0e8_0 .net "Scarry_in", 0 0, v020fe2f8_0;  alias, 1 drivers
+v020fda08_0 .net "Scarry_out", 0 0, L_02103260;  alias, 1 drivers
+v020fe1f0_0 .net "Sin1", 0 0, v020fde28_0;  alias, 1 drivers
+v020fddd0_0 .net "Sin2", 0 0, v020fda60_0;  alias, 1 drivers
+v020fd900_0 .net "Ssum", 0 0, L_02103338;  alias, 1 drivers
+v020fe248 .array "carry_not_and_input", 0 2;
+v020fe248_0 .net v020fe248 0, 0 0, L_02103218; 1 drivers
+v020fe248_1 .net v020fe248 1, 0 0, L_02103578; 1 drivers
+v020fe248_2 .net v020fe248 2, 0 0, L_021035c0; 1 drivers
+v020fe038 .array "in", 0 2;
+v020fe038_0 .net v020fe038 0, 0 0, L_021033c8; 1 drivers
+v020fe038_1 .net v020fe038 1, 0 0, L_021032a8; 1 drivers
+v020fe038_2 .net v020fe038 2, 0 0, L_02103530; 1 drivers
+v020fdfe0 .array "not_in", 0 2;
+v020fdfe0_0 .net v020fdfe0 0, 0 0, L_02103890; 1 drivers
+v020fdfe0_1 .net v020fdfe0 1, 0 0, L_021037b8; 1 drivers
+v020fdfe0_2 .net v020fdfe0 2, 0 0, L_02103608; 1 drivers
+v020fdbc0 .array "sum_not_and_input", 0 3;
+v020fdbc0_0 .net v020fdbc0 0, 0 0, L_02103770; 1 drivers
+v020fdbc0_1 .net v020fdbc0 1, 0 0, L_02103650; 1 drivers
+v020fdbc0_2 .net v020fdbc0 2, 0 0, L_02103848; 1 drivers
+v020fdbc0_3 .net v020fdbc0 3, 0 0, L_021038d8; 1 drivers
+    .scope S_01033038;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fde28_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fda60_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v020fe2f8_0, 0, 1;
+    %delay 1, 0;
+    %end;
+    .thread T_0;
+    .scope S_01033038;
+T_1 ;
+    %vpi_call 3 24 "$monitor", "Behavioral Input1:%b, Input2:%b, Input3:%b, Sum:%b, carry_out:%b", v020fde28_0, v020fda60_0, v020fe2f8_0, v020fded8_0, v020fd9b0_0 {0 0 0};
+    %vpi_call 3 25 "$monitor", "Structural Input1:%b, Input2:%b, Input3:%b, Sum:%b, carry_out:%b", v020fde28_0, v020fda60_0, v020fe2f8_0, v020fdc70_0, v020fd850_0 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_01033038;
+T_2 ;
+    %vpi_call 3 31 "$dumpfile", "test.vcd" {0 0 0};
+    %vpi_call 3 32 "$dumpvars" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "FullAdderStructural.v";
+    "test.v";
+    "FullAdderBehavior.v";
